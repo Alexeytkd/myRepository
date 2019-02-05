@@ -7,6 +7,7 @@
 function getEnvs($filename)
 {
     $envFile = file_get_contents($filename); // получение содержимого файла .env
+
     $envData = explode('
 ', $envFile); // построчное разбиение на элементы массива
     $env = [];
@@ -23,8 +24,7 @@ function getEnvs($filename)
  */
 function getDatabaseConnect()
 {
-    $env = getEnvs('../.env'); // вызов функции которая получает настройки подключения к базе
-    $conn = new mysqli($env['servername'], $env['username'], $env['password'], $env['dbname']); // создание подключения
+    $conn = new mysqli('localhost', 'alexey', '1234', 'homestead'); // создание подключения
     // Check connection
     if ($conn->connect_error) { // проверка наличие ошибки
         die("Connection failed: " . $conn->connect_error); // вывод ошибки

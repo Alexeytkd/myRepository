@@ -6,7 +6,7 @@
  * Time: 11:47
  */
 include_once ('../libs/func.php');
-$conn = getDatabaseConnect;
+$conn = getDatabaseConnect();
 
 ini_set('display_errors' , 1);
 if (sizeof($_REQUEST)) {
