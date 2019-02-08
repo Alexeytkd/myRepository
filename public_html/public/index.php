@@ -1,15 +1,14 @@
+
 <?php
-/**
- * Created by PhpStorm.
- * User: alexey
- * Date: 24.01.19
- * Time: 11:47
- */
+ini_set('display_errors' , 1);
+
 include_once ('../libs/func.php');
 $conn = getDatabaseConnect();
+$errorMessage = '';
 
-ini_set('display_errors' , 1);
-if (sizeof($_REQUEST)) {
+
+if (sizeof($_REQUEST) ) {
+
     if (!empty($_REQUEST['email'])
         and !empty($_REQUEST['password'])
         and !empty($_REQUEST['confirm-password'])
@@ -38,7 +37,6 @@ if (sizeof($_REQUEST)) {
     }
 
 }
-
 echo "
 <meta charset=" . '<!DOCTYPE html>
 <html lang="en">

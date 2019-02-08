@@ -8,8 +8,7 @@ function getEnvs($filename)
 {
     $envFile = file_get_contents($filename); // получение содержимого файла .env
 
-    $envData = explode('
-', $envFile); // построчное разбиение на элементы массива
+    $envData = explode('', $envFile); // построчное разбиение на элементы массива
     $env = [];
     foreach ($envData as $param) { // цикл по строкам
         $item = explode('=', $param); // разбиение по знаку =
@@ -31,14 +30,16 @@ function getDatabaseConnect()
     }
 
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'migration') { // проверка приходит ли параметр /?do=migration
-        include_once ('../source/migration.php'); // подключение файла миграций
+        include_once('../source/migration.php'); // подключение файла миграций
     }
 
     $sql = 'select count(*) as user_count from users'; // формирование агрегатного запроса к базе (подсчет количества пользователей)
     $checkSql = $conn->query($sql); // исполнение запроса
-    if($checkSql) { // проверка результата
+    if ($checkSql) { // проверка результата
         $usersCount = $checkSql->fetch_assoc(); // представление результата в виде массива
     }
+
+
     if ($conn->error) { // проверка ошибок запроса
         print_r($conn->error); // вывод ошибок (если база пустая ошибка скажет что таблицы users не существуе)
         echo '<br>No data in database. Do you want to <a href="/?do=migration">run migration</a>?'; // и тогда выводим ссылку которая запустит миграцию

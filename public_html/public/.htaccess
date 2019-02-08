@@ -4,3 +4,5 @@ FallbackResource /index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+
+RewriteRule ^GAi7L$ /a/GAi7L.php
